@@ -11,11 +11,19 @@ function App() {
       <main className='kanban-board'>
         <section className='kanban-column column-todo'>
           <h2>待处理</h2>
+
           <ul>
-            <li className='kanban-card'>
-              <div className='card-title'>开发任务-1</div>
-              <div className='card-status'>22-05-22 18:15</div>
-            </li>
+            {
+              // new Array(10).fill('') 演示目的用空字符串填充一个包含10个元素的数组
+              // map()方法返回一个新的数组
+              new Array(10).fill('').map(item => (
+                <li className='kanban-card'>
+                  <div className='card-title'>开发任务-1</div>
+                  <div className='card-status'>22-05-22 18:15</div>
+                </li>
+              ))
+            }
+
           </ul>
         </section>
         <section className='kanban-column column-ongoing'>
