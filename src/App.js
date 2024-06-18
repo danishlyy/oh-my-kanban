@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
 const todoList = [
   { title: '开发任务-1', status: '22-05-22 18:15' },
@@ -28,7 +29,36 @@ const KanbanCard = ({ title, status }) => {
   )
 }
 
+// 添加卡片组件
+const KanbanNewCard = ({ onSubmit }) => {
+  const [title, setTitle] = useState('');
+  const handleChange = (evt) => {
+    setTitle(evt.target.value);
+  };
+  const handleKeyDown = (evt) => {
+    if (evt.key === 'Enter') {
+      onSubmit(title)
+    }
+  };
+  return (
+    <li className='kanban-card'>
+      <h3>添加新卡片</h3>
+      <div className='card-title'>
+        <input type='text' value={title} onChange={handleChange} onKeyDown={handleKeyDown}></input>
+      </div>
+    </li>
+  )
+}
+
 function App() {
+  const [showAdd, setShowAdd] = useState(false)
+  const handleAdd = (evt) => {
+    setShowAdd(true);
+  };
+  const handleSubmit = (title) => {
+    todoList.unshift({ title, status: new Date().toDateString() });
+    setShowAdd(false);
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -37,8 +67,10 @@ function App() {
       </header>
       <main className='kanban-board'>
         <section className='kanban-column column-todo'>
-          <h2>待处理</h2>
+          <h2>待处理<button onClick={handleAdd} disabled={showAdd}>&#8853;添加新卡片</button></h2>
           <ul>
+
+            {showAdd && <KanbanNewCard onSubmit={handleSubmit}></KanbanNewCard>}
             {todoList.map(props => <KanbanCard {...props} />)}
           </ul>
         </section>
@@ -55,7 +87,7 @@ function App() {
           </ul>
         </section>
       </main>
-    </div>
+    </div >
   );
 }
 
