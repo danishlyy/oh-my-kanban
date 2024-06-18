@@ -49,6 +49,24 @@
   border-radius: 1rem;
 }
 
+.kanban-column>h2 {
+  margin: 0.6rem 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid gray;
+}
+
+.column-todo {
+  background-color: #c9af97;
+}
+
+.column-ongoing {
+  background-color: #ffe799;
+}
+
+.column-done {
+  background-color: #c0e8ba;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
