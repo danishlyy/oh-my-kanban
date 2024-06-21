@@ -67,7 +67,7 @@ function App() {
     { title: '开发任务-1', status: '22-05-22 18:15' },
     { title: '开发任务-3', status: '22-05-22 18:15' },
     { title: '开发任务-5', status: '22-05-22 18:15' },
-    { title: '开发任务-3', status: '22-05-22 18:15' }
+    { title: '开发任务-7', status: '22-05-22 18:15' }
   ]
   );
 
@@ -93,13 +93,13 @@ function App() {
         <KanbanColumn className='column-todo' title={<>待处理 <button onClick={handleAdd} disabled={showAdd}>&#8853;添加新卡片</button></>}>
 
           {showAdd && <KanbanNewCard onSubmit={handleSubmit}></KanbanNewCard>}
-          {todoList.map(props => <KanbanCard {...props} />)}
+          {todoList.map(props => <KanbanCard key={props.title} {...props} />)}
         </KanbanColumn>
         <KanbanColumn className='column-ongoing' title='进行中'>
-          {ongoingList.map(props => <KanbanCard {...props} />)}
+          {ongoingList.map(props => <KanbanCard key={props.title} {...props} />)}
         </KanbanColumn>
         <KanbanColumn className='column-done' title='已完成'>
-          {doneList.map(props => <KanbanCard {...props} />)}
+          {doneList.map(props => <KanbanCard key={props.title} {...props} />)}
         </KanbanColumn>
       </KanbanBoard>
     </div >
