@@ -2,6 +2,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
+import { css } from '@emotion/react';
 
 
 
@@ -49,7 +50,13 @@ const KanbanNewCard = ({ onSubmit }) => {
 
 //  <main> 改写成 React 组件
 const KanbanBoard = ({ children }) => (
-  <main className='kanban-board'>{children}</main>
+  <main css={css`
+      flex: 10;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      margin: 0 1rem 1rem;
+    `}>{children}</main>
 );
 
 const KanbanColumn = ({ children, className, title }) => {
