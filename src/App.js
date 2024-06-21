@@ -1,6 +1,7 @@
+/** @jsxImportSource @emotion/react */
 import logo from './logo.svg';
 import './App.css';
-import React, { Children, useState } from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -23,6 +24,7 @@ const KanbanCard = ({ title, status }) => {
     </li>
   )
 }
+
 
 // 添加卡片组件
 const KanbanNewCard = ({ onSubmit }) => {
